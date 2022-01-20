@@ -69,3 +69,5 @@ sudo systemctl status cloudflared
 ```
 
 # Misc
+
+* [DDClient to update DDNS](https://blog.jswart.xyz/posts/cloudflare-dynamic-dns/)

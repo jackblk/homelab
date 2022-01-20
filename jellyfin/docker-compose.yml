@@ -43,3 +43,14 @@ services:
       - 443:443
       - 80:80 #optional
     restart: unless-stopped
+
+  ddclient:
+    image: linuxserver/ddclient
+    container_name: ddclient
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /app/data/ddclient/config:/config
+    restart: unless-stopped
