@@ -55,7 +55,7 @@ sudo dpkg -i cloudflared-linux-amd64.deb
 Create config file:
 
 ```bash
-./cloudflared-config.sh # dont run by root
+bash cloudflared-config.sh # dont run by root
 sudo cloudflared service install
 sudo systemctl enable cloudflared
 ```
