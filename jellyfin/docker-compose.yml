@@ -20,6 +20,7 @@ services:
 
   swag:
     image: linuxserver/swag
+    pull_policy: always
     container_name: swag
     cap_add:
       - NET_ADMIN
@@ -46,6 +47,7 @@ services:
 
   ddclient:
     image: linuxserver/ddclient
+    pull_policy: always
     container_name: ddclient
     environment:
       - PUID=1000
