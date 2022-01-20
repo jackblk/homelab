@@ -22,6 +22,12 @@ sudo dpkg -i cloudflared-linux-amd64.deb
 ```
 
 ### Config
+
+* Login: `cloudflared tunnel login`
+* Create tunnel: `cloudflared tunnel create homelab`
+
+Create config file:
+
 ```bash
 ./cloudflared-config.sh
 sudo cloudflared service install
