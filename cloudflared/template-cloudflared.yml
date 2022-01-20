@@ -1,7 +1,9 @@
 tunnel: ${TUNNELID}
-credentials-file: /${HOME}/.cloudflared/${TUNNELID}.json
+credentials-file: ${HOME}/.cloudflared/${TUNNELID}.json
 
 ingress:
   - hostname: flix.haicon.moe
     service: http://localhost:8096
+  - hostname: tor.haicon.moe
+    service: http://localhost:8080
   - service: http_status:404

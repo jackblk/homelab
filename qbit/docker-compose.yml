@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  qbit:
+    image: linuxserver/qbittorrent
+    pull_policy: always
+    container_name: qbit
+    user: 1000:1000
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+      - WEBUI_PORT=8080
+    volumes:
+      - /app/media:/downloads
+      - /app/data/qbit/config:/config
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    restart: unless-stopped

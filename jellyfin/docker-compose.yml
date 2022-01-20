@@ -1,7 +1,8 @@
-version: "3.5"
+version: "3.8"
 services:
   jellyfin:
     image: jellyfin/jellyfin
+    pull_policy: always
     container_name: jellyfin
     # currently using the first user from my system
     # uid: id -u user
