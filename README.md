@@ -71,3 +71,5 @@ sudo systemctl status cloudflared
 # Misc
 
 * [DDClient to update DDNS](https://blog.jswart.xyz/posts/cloudflare-dynamic-dns/)
+* [Jellyfin Let's Encrypt and Docker](https://jellyfin.org/docs/general/networking/letsencrypt.html#lets-encrypt-and-docker)
+* [linuxserver/swag](https://docs.linuxserver.io/images/docker-swag#parameters)

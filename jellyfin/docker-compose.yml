@@ -29,7 +29,7 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
       - URL=haicon.moe
-      - SUBDOMAINS=flix
+      - SUBDOMAINS=flix,catflix
       - VALIDATION=http
       - ONLY_SUBDOMAINS=true #optional
       # - CERTPROVIDER= #optional
