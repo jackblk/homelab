@@ -49,7 +49,6 @@ sudo dpkg -i cloudflared-linux-amd64.deb
 
 * Login: `cloudflared tunnel login`
 * Create tunnel: `cloudflared tunnel create homelab`
-* Route DNS for Jelly: `cloudflared tunnel route dns homelab flix`
 * Route DNS for Qbit: `cloudflared tunnel route dns homelab tor`
 
 Create config file:
