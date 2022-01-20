@@ -1,6 +1,6 @@
 # Homelab
 
-
+My private homelab :).
 ## Jellyfin
 
 ```bash
@@ -20,15 +20,6 @@ cd ..
 cd qbit
 docker-compose up -d
 cd ..
-```
-
-```bash
-sudo apt update
-sudo apt install -y software-properties-common
-sudo add-apt-repository -y ppa:qbittorrent-team/qbittorrent-stable
-sudo apt update
-sudo apt install -y qbittorrent-nox
-qbittorrent-nox --version
 ```
 
 ## Cloudflared
