@@ -2,8 +2,10 @@ tunnel: ${TUNNELID}
 credentials-file: ${HOME}/.cloudflared/${TUNNELID}.json
 
 ingress:
-  - hostname: flix.haicon.moe
-    service: http://localhost:8096
+  # not used for now, tunneling is slower than direct
+  # so use port forwarding + let's encrypt is better
+  # - hostname: flix.haicon.moe
+  #   service: http://localhost:8096
   - hostname: tor.haicon.moe
     service: http://localhost:8080
   - service: http_status:404

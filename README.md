@@ -63,9 +63,9 @@ sudo systemctl enable cloudflared
 ### Usage
 
 ```bash
+sudo systemctl stop cloudflared
 sudo systemctl start cloudflared
 sudo systemctl status cloudflared
-sudo systemctl stop cloudflared
 ```
 
 # Misc
