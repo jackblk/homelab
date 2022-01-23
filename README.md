@@ -67,6 +67,15 @@ sudo systemctl start cloudflared
 sudo systemctl status cloudflared
 ```
 
+## Hardware Acceleration
+
+For VAAPI:
+
+```bash
+# for my intel igpu
+sudo apt install libva-dev i965-va-driver
+```
+
 # Misc
 
 * [DDClient to update DDNS](https://blog.jswart.xyz/posts/cloudflare-dynamic-dns/)
