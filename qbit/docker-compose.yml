@@ -12,6 +12,7 @@ services:
     volumes:
       - /app/media:/downloads
       - /app/data/qbit/config:/config
+      - /app/data/qbit/theme:/theme
     ports:
       - 6881:6881
       - 6881:6881/udp
