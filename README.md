@@ -77,6 +77,7 @@ sudo apt install libva-dev i965-va-driver
 ```
 
 Set supported codecs to decode with VAAPI by checking `vainfo`.
+VA API device should be `/dev/dri/renderD128` or `/dev/dri/renderD129` based on your GPU.
 
 For [newer Intel iGPU](https://jellyfin.org/docs/general/administration/hardware-acceleration.html#configuring-intel-quicksyncqsv-on-debianubuntu):
 
