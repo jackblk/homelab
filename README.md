@@ -72,8 +72,16 @@ sudo systemctl status cloudflared
 For VAAPI:
 
 ```bash
-# for my intel igpu
+# for my intel igpu sandy bridge 2xxx
 sudo apt install libva-dev i965-va-driver
+```
+
+Set supported codecs to decode with VAAPI by checking `vainfo`.
+
+For [newer Intel iGPU](https://jellyfin.org/docs/general/administration/hardware-acceleration.html#configuring-intel-quicksyncqsv-on-debianubuntu):
+
+```bash
+sudo apt install vainfo intel-media-va-driver-non-free
 ```
 
 # Misc
