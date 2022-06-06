@@ -19,6 +19,9 @@ services:
       - /dev/dri/renderD129:/dev/dri/renderD129
       - /dev/dri/card0:/dev/dri/card0
       - /dev/dri/card1:/dev/dri/card1
+    # ports:
+    #   - 8096:8096 # http
+    #   - 8920:8920 # https
     volumes:
       - /app/data/jellyfin/config:/config
       - /app/data/jellyfin/cache:/cache
@@ -74,7 +77,7 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
-      - 81:81
+      # - 81:81
       - 443:443
     volumes:
       - /app/data/nginx-proxy-manager/data:/data
@@ -93,10 +96,10 @@ services:
       - /app/media/torrents:/downloads
       - /app/data/qbit/config:/config
       - /app/data/qbit/theme:/theme
-    ports:
-      - 6881:6881
-      - 6881:6881/udp
-      - 8080:8080
+    # ports:
+    #   - 6881:6881
+    #   - 6881:6881/udp
+    #   - 8080:8080
     restart: unless-stopped
 
   sonarr:
@@ -109,9 +112,9 @@ services:
       - TZ=Asia/Ho_Chi_Minh
     volumes:
       - /app/data/sonarr/config:/config
-      - /app/media/:/media
-    ports:
-      - 8989:8989
+      - /app/media/:/data
+    # ports:
+    #   - 8989:8989
     restart: unless-stopped
 
   radarr:
@@ -124,7 +127,7 @@ services:
       - TZ=Asia/Ho_Chi_Minh
     volumes:
       - /app/data/radarr/config:/config
-      - /app/media/:/media
-    ports:
-      - 7878:7878
+      - /app/media/:/data
+    # ports:
+    #   - 7878:7878
     restart: unless-stopped
