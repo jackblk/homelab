@@ -93,6 +93,8 @@ sudo apt install vainfo intel-media-va-driver-non-free
 
 ## Folder structure
 
+On host:
+
 ```
 media -> for sonarr, radarr
 ├── torrents -> for qbit
@@ -101,4 +103,18 @@ media -> for sonarr, radarr
 └── media -> for jellyfin
     ├── movies
     └── shows
+```
+
+On container:
+
+```
+data
+├── torrents
+│  ├── movies
+│  ├── music
+│  └── tv
+└── media
+   ├── movies
+   ├── music
+   └── tv
 ```

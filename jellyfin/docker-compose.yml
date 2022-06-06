@@ -30,34 +30,6 @@ services:
     # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
-
-  # swag:
-  #   image: linuxserver/swag
-  #   pull_policy: always
-  #   container_name: swag
-  #   cap_add:
-  #     - NET_ADMIN
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=Asia/Ho_Chi_Minh
-  #     - URL=haicon.moe
-  #     - SUBDOMAINS=flix,catflix
-  #     - VALIDATION=http
-  #     - ONLY_SUBDOMAINS=true #optional
-  #     # - CERTPROVIDER= #optional
-  #     # - DNSPLUGIN=cloudflare #optional
-  #     # - DUCKDNSTOKEN=<token> #optional
-  #     # - EMAIL=<e-mail> #optional
-  #     # - EXTRA_DOMAINS=<extradomains> #optional
-  #     # - STAGING=false #optional
-  #   volumes:
-  #     - /app/data/swag/config:/config
-  #   ports:
-  #     - 443:443
-  #     - 80:80 #optional
-  #   restart: unless-stopped
-
   ddclient:
     image: linuxserver/ddclient
     pull_policy: always
@@ -93,7 +65,7 @@ services:
       - TZ=Asia/Ho_Chi_Minh
       - WEBUI_PORT=8080
     volumes:
-      - /app/media/torrents:/downloads
+      - /app/media/torrents:/data/torrents
       - /app/data/qbit/config:/config
       - /app/data/qbit/theme:/theme
     # ports:
