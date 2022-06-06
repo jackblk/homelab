@@ -90,3 +90,15 @@ sudo apt install vainfo intel-media-va-driver-non-free
 * [DDClient to update DDNS](https://blog.jswart.xyz/posts/cloudflare-dynamic-dns/)
 * [Jellyfin Let's Encrypt and Docker](https://jellyfin.org/docs/general/networking/letsencrypt.html#lets-encrypt-and-docker)
 * [linuxserver/swag](https://docs.linuxserver.io/images/docker-swag#parameters)
+
+## Folder structure
+
+```
+media -> for sonarr, radarr
+├── torrents -> for qbit
+│  ├── movies
+│  └── shows
+└── media -> for jellyfin
+    ├── movies
+    └── shows
+```

@@ -22,38 +22,38 @@ services:
     volumes:
       - /app/data/jellyfin/config:/config
       - /app/data/jellyfin/cache:/cache
-      - /app/media:/media
+      - /app/media/media:/media
     restart: "unless-stopped"
     # Optional - alternative address used for autodiscovery
     environment:
-      - JELLYFIN_PublishedServerUrl=http://flix.haicon.moe
+      - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
 
-  swag:
-    image: linuxserver/swag
-    pull_policy: always
-    container_name: swag
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Ho_Chi_Minh
-      - URL=haicon.moe
-      - SUBDOMAINS=flix,catflix
-      - VALIDATION=http
-      - ONLY_SUBDOMAINS=true #optional
-      # - CERTPROVIDER= #optional
-      # - DNSPLUGIN=cloudflare #optional
-      # - DUCKDNSTOKEN=<token> #optional
-      # - EMAIL=<e-mail> #optional
-      # - EXTRA_DOMAINS=<extradomains> #optional
-      # - STAGING=false #optional
-    volumes:
-      - /app/data/swag/config:/config
-    ports:
-      - 443:443
-      - 80:80 #optional
-    restart: unless-stopped
+  # swag:
+  #   image: linuxserver/swag
+  #   pull_policy: always
+  #   container_name: swag
+  #   cap_add:
+  #     - NET_ADMIN
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Asia/Ho_Chi_Minh
+  #     - URL=haicon.moe
+  #     - SUBDOMAINS=flix,catflix
+  #     - VALIDATION=http
+  #     - ONLY_SUBDOMAINS=true #optional
+  #     # - CERTPROVIDER= #optional
+  #     # - DNSPLUGIN=cloudflare #optional
+  #     # - DUCKDNSTOKEN=<token> #optional
+  #     # - EMAIL=<e-mail> #optional
+  #     # - EXTRA_DOMAINS=<extradomains> #optional
+  #     # - STAGING=false #optional
+  #   volumes:
+  #     - /app/data/swag/config:/config
+  #   ports:
+  #     - 443:443
+  #     - 80:80 #optional
+  #   restart: unless-stopped
 
   ddclient:
     image: linuxserver/ddclient
@@ -65,4 +65,66 @@ services:
       - TZ=Asia/Ho_Chi_Minh
     volumes:
       - /app/data/ddclient/config:/config
+    restart: unless-stopped
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    pull_policy: always
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    volumes:
+      - /app/data/nginx-proxy-manager/data:/data
+      - /app/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+
+  qbit:
+    image: linuxserver/qbittorrent
+    pull_policy: always
+    container_name: qbit
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+      - WEBUI_PORT=8080
+    volumes:
+      - /app/media/torrents:/downloads
+      - /app/data/qbit/config:/config
+      - /app/data/qbit/theme:/theme
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8080:8080
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    pull_policy: always
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /app/data/sonarr/config:/config
+      - /app/media/:/media
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    pull_policy: always
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /app/data/radarr/config:/config
+      - /app/media/:/media
+    ports:
+      - 7878:7878
     restart: unless-stopped
