@@ -1,29 +1,30 @@
 # Homelab
 
 My private homelab :).
-## Jellyfin
+## Media server
 
 ```bash
 # Create data folder
 sudo mkdir /app
 sudo chown -R $USER:$USER /app
 
+# Clone repo
+cd /app
+git clone https://github.com/jackblk/homelab.git
+cd /app/homelab
+
 # Run
-cd jellyfin
-docker-compose up -d
-cd ..
+make
+
+# Stop
+make stop-media
 ```
 
-## Qbittorrent-nox
-
-```bash
-cd qbit
-docker-compose up -d
-cd ..
-```
 
 ## Cloudflared
 
+<details>
+<summary>Not used</summary>
 ### Install
 
 This is not supported in `bullseye` yet. Refer: https://pkg.cloudflare.com/
@@ -66,6 +67,8 @@ sudo systemctl stop cloudflared
 sudo systemctl start cloudflared
 sudo systemctl status cloudflared
 ```
+
+</details>
 
 ## Hardware Acceleration
 
