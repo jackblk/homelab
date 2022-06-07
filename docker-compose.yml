@@ -104,6 +104,36 @@ services:
     #   - 7878:7878
     restart: unless-stopped
 
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    pull_policy: always
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+      - AUTO_UPDATE=true
+    volumes:
+      - /app/data/jackett/config:/config
+    # ports:
+    #   - 9117:9117
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    pull_policy: always
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /app/data/bazarr/config:/config
+      - /app/media/:/data
+    # ports:
+    #   - 6767:6767
+    restart: unless-stopped
+
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     pull_policy: always
