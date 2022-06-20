@@ -5,13 +5,13 @@ My private homelab :).
 
 ```bash
 # Create data folder
-sudo mkdir /app
-sudo chown -R $USER:$USER /app
+sudo mkdir /datadisk/server
+sudo chown -R $USER:$USER /datadisk/server
 
 # Clone repo
-cd /app
+cd /datadisk/server
 git clone https://github.com/jackblk/homelab.git
-cd /app/homelab
+cd /datadisk/server/homelab
 
 # Run
 make
