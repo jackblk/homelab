@@ -16,9 +16,9 @@ services:
 
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/renderD129:/dev/dri/renderD129
+      # - /dev/dri/renderD129:/dev/dri/renderD129
+      # - /dev/dri/card1:/dev/dri/card1
       - /dev/dri/card0:/dev/dri/card0
-      - /dev/dri/card1:/dev/dri/card1
     # ports:
     #   - 8096:8096 # http
     #   - 8920:8920 # https
