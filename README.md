@@ -54,10 +54,10 @@ sudo apt install vainfo intel-media-va-driver-non-free
 
 ```shell
 # run
-make adguardhome
+make dns-adguardhome
 
 # stop
-make adguardhome-stop
+make dns-adguardhome-stop
 ```
 
 # Misc
