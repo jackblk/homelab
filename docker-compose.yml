@@ -12,7 +12,7 @@ services:
     # network_mode: "host" # not using for multiple services
     group_add:
       # check group id with `cat /etc/group | grep render`
-      - 107
+      - 106
 
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
