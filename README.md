@@ -49,6 +49,17 @@ sudo apt-get update
 sudo apt install vainfo intel-media-va-driver-non-free
 ```
 
+## Adguard Home
+
+
+```shell
+# run
+make adguardhome
+
+# stop
+make adguardhome-stop
+```
+
 # Misc
 
 * [DDClient to update DDNS](https://blog.jswart.xyz/posts/cloudflare-dynamic-dns/)

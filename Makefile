@@ -5,3 +5,9 @@ run-media:
 
 stop-media:
 	@docker-compose down -v
+
+adguardhome:
+	@cd adguardhome && docker-compose up -d
+
+adguardhome-stop:
+	@cd adguardhome && docker-compose down -v
