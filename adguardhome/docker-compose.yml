@@ -11,5 +11,5 @@ services:
       # - 853:853/tcp # dns over tls
       - 3000:3000/tcp # web UI
     volumes:
-      - /datadisk/server/data/adguardhome/data/work:/opt/adguardhome/work
-      - /datadisk/server/data/adguardhome/data/conf:/opt/adguardhome/conf
+      - /osdisk/adguardhome/data/work:/opt/adguardhome/work
+      - /osdisk/adguardhome/data/conf:/opt/adguardhome/conf
