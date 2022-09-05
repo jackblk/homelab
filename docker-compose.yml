@@ -1,15 +1,15 @@
 version: "3.8"
 services:
-  # homepage:
-  #   image: ghcr.io/benphelps/homepage:main
-  #   pull_policy: always
-  #   restart: unless-stopped
-  #   container_name: homepage
-  #   # ports:
-  #   # - 3000:3000
-  #   volumes:
-  #     - /datadisk/server/data/homepage/config:/app/config
-  #     - /var/run/docker.sock:/var/run/docker.sock
+  homepage:
+    image: ghcr.io/benphelps/homepage:main
+    pull_policy: always
+    restart: unless-stopped
+    container_name: homepage
+    # ports:
+    # - 3000:3000
+    volumes:
+      - /datadisk/server/data/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
   jellyfin:
     image: jellyfin/jellyfin
     pull_policy: always
