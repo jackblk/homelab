@@ -142,6 +142,19 @@ services:
     #   - 9117:9117
     restart: unless-stopped
 
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    pull_policy: always
+    container_name: flaresolverr
+    restart: unless-stopped
+    environment:
+      # - LOG_LEVEL=info
+      # - LOG_HTML=false
+      # - CAPTCHA_SOLVER=none
+      - TZ=Asia/Ho_Chi_Minh
+    # ports:
+    #   - 8191:8191
+
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     pull_policy: always
