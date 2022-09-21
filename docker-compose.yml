@@ -11,6 +11,18 @@ services:
       - /datadisk/server/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
       - /datadisk:/datadisk:ro
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    pull_policy: always
+    container_name: jellyseerr
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Ho_Chi_Minh
+    # ports:
+    #   - 5055:5055
+    volumes:
+      - /datadisk/server/data/jellyseer/config:/app/config
   jellyfin:
     image: jellyfin/jellyfin
     pull_policy: always
