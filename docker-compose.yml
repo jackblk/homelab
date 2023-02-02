@@ -169,3 +169,16 @@ services:
     # ports:
     #   - 6767:6767
     restart: unless-stopped
+
+  speedtest-tracker:
+      container_name: speedtest-tracker
+      # ports:
+      #     - '8080:80'
+      #     - '8443:443'
+      environment:
+          - PUID=1000
+          - PGID=1000
+      volumes:
+          - '/datadisk/server/data/speedtest-tracker/config:/config'
+      image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+      restart: unless-stopped
