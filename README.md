@@ -1,6 +1,7 @@
 # Homelab
 
 My private homelab :).
+
 ## Media server
 
 ```bash
@@ -27,7 +28,6 @@ Then:
 * Configure Nginx proxy manager, DDClient for domains, DNS stuff.
 * Configure heimdall for dashboard.
 
-
 ## Hardware Acceleration
 
 For VAAPI:
@@ -50,7 +50,6 @@ sudo apt install vainfo intel-media-va-driver-non-free
 ```
 
 ## Adguard Home
-
 
 ```shell
 # run
@@ -93,53 +92,3 @@ data
    ├── music
    └── tv
 ```
-
-## Cloudflared
-
-<details>
-<summary>Not used</summary>
-
-### Install
-
-This is not supported in `bullseye` yet. Refer: https://pkg.cloudflare.com/
-
-```bash
-RELEASE=bullseye
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/ $RELEASE main" | sudo tee /etc/apt/sources.list.d/cloudflare-main.list
-
-# import key
-sudo curl https://pkg.cloudflare.com/cloudflare-main.gpg -o /usr/share/keyrings/cloudflare-main.gpg
-
-sudo apt-get update
-sudo apt-get install -y cloudflared
-```
-
-Install via dpkg:
-```bash
-wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-sudo dpkg -i cloudflared-linux-amd64.deb
-```
-
-### Config
-
-* Login: `cloudflared tunnel login`
-* Create tunnel: `cloudflared tunnel create homelab`
-* Route DNS for Qbit: `cloudflared tunnel route dns homelab tor`
-
-Create config file:
-
-```bash
-bash cloudflared-config.sh # dont run by root
-sudo cloudflared service install
-sudo systemctl enable cloudflared
-```
-
-### Usage
-
-```bash
-sudo systemctl stop cloudflared
-sudo systemctl start cloudflared
-sudo systemctl status cloudflared
-```
-
-</details>
