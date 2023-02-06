@@ -180,6 +180,9 @@ services:
     #   - 8266:8266 # server port
     #   - 8267:8267 # Internal node port
     #   - 8268:8268 # Example extra node port
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card0:/dev/dri/card0
     environment:
       - TZ=Asia/Ho_Chi_Minh
       - PUID=1000
