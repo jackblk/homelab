@@ -66,7 +66,7 @@ services:
     restart: unless-stopped
 
   nginx-proxy-manager:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: 'jc21/nginx-proxy-manager:2.9.22'
     pull_policy: always
     container_name: nginx-proxy-manager
     restart: unless-stopped
@@ -201,14 +201,14 @@ services:
       - /datadisk/server/media:/media
 
   speedtest-tracker:
-      container_name: speedtest-tracker
-      # ports:
-      #     - '8080:80'
-      #     - '8443:443'
-      environment:
-          - PUID=1000
-          - PGID=1000
-      volumes:
-          - '/datadisk/server/data/speedtest-tracker/config:/config'
-      image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
-      restart: unless-stopped
+    container_name: speedtest-tracker
+    # ports:
+    #     - '8080:80'
+    #     - '8443:443'
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - '/datadisk/server/data/speedtest-tracker/config:/config'
+    image: 'ghcr.io/alexjustesen/speedtest-tracker:latest'
+    restart: unless-stopped
