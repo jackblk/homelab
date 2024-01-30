@@ -11,6 +11,20 @@ services:
       - /datadisk/server/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
       - /datadisk:/datadisk:ro
+
+  home-assistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    pull_policy: always
+    restart: unless-stopped
+    container_name: home-assistant
+    # ports:
+    # - 8123:8123
+    volumes:
+      - /datadisk/server/data/home-assistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      # - /run/dbus:/run/dbus:ro # for Bluetooth integration
+    # privileged: true
+
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     pull_policy: always
@@ -36,7 +50,6 @@ services:
     group_add:
       # check group id with `cat /etc/group | grep render`
       - "106"
-
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       # - /dev/dri/renderD129:/dev/dri/renderD129
@@ -53,6 +66,7 @@ services:
     # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
+
   ddclient:
     image: linuxserver/ddclient
     pull_policy: always
