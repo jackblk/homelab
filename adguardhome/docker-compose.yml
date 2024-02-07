@@ -2,6 +2,7 @@ version: "3"
 services:
   adguardhome:
     image: adguard/adguardhome
+    pull_policy: always
     container_name: adguardhome
     restart: unless-stopped
     ports:
