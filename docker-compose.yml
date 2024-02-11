@@ -156,6 +156,20 @@ services:
     #   - 9117:9117
     restart: unless-stopped
 
+  prowlarr:
+    image: ghcr.io/hotio/prowlarr
+    pull_policy: always
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /datadisk/server/data/prowlarr/config:/config
+    # ports:
+    #   - 9696:9696
+    restart: unless-stopped
+
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     pull_policy: always
