@@ -236,6 +236,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+    env_file: ./.env
     volumes:
       - "/datadisk/server/data/speedtest-tracker/config:/config"
     image: "ghcr.io/alexjustesen/speedtest-tracker:latest"

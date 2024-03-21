@@ -14,6 +14,9 @@ cd /datadisk/server
 git clone https://github.com/jackblk/homelab.git
 cd /datadisk/server/homelab
 
+# Create .env file, edit it
+cp .env.example .env
+
 # Run
 make
 
