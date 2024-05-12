@@ -38,7 +38,7 @@ services:
     volumes:
       - /datadisk/server/data/jellyseer/config:/app/config
   jellyfin:
-    image: ghcr.io/confusedpolarbear/jellyfin-intro-skipper
+    image: jellyfin/jellyfin
     pull_policy: always
     container_name: jellyfin
 
