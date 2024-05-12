@@ -38,7 +38,7 @@ services:
     volumes:
       - /datadisk/server/data/jellyseer/config:/app/config
   jellyfin:
-    image: jellyfin/jellyfin
+    image: linuxserver/jellyfin
     pull_policy: always
     container_name: jellyfin
 
@@ -62,6 +62,7 @@ services:
       - /datadisk/server/data/jellyfin/config:/config
       - /datadisk/server/data/jellyfin/cache:/cache
       - /datadisk/server/media/media:/media
+      - ./custom-jellyfin-script:/custom-cont-init.d:ro
     restart: unless-stopped
     # Optional - alternative address used for autodiscovery
     environment:
