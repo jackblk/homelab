@@ -2,6 +2,7 @@
 
 run-media:
 	@docker-compose up -d
+	@docker exec -u root -it jellyfin chown 1000 /jellyfin/jellyfin-web/index.html
 
 stop-media:
 	@docker-compose down -v
