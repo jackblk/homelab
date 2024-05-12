@@ -45,7 +45,8 @@ services:
     # currently using the first user from my system
     # uid: id -u user
     # gid: id -g group
-    user: 1000:1000
+    # not using right now since we are using linuxserver img, which can be configured with PUID GUID
+    # user: 1000:1000
     # network_mode: "host" # not using for multiple services
     group_add:
       # check group id with `cat /etc/group | grep render`
