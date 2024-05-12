@@ -67,6 +67,8 @@ services:
     # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
+      - PUID=1000
+      - PGID=1000
 
   ddclient:
     image: linuxserver/ddclient
