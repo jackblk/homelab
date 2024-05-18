@@ -231,6 +231,8 @@ services:
       - /datadisk/server/media:/media
 
   speedtest-tracker:
+    image: lscr.io/linuxserver/speedtest-tracker:latest
+    restart: unless-stopped
     container_name: speedtest-tracker
     # ports:
     #     - '8080:80'
@@ -241,5 +243,3 @@ services:
     env_file: ./.env
     volumes:
       - "/datadisk/server/data/speedtest-tracker/config:/config"
-    image: "ghcr.io/alexjustesen/speedtest-tracker:latest"
-    restart: unless-stopped
