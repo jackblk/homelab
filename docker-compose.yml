@@ -81,18 +81,30 @@ services:
       - /datadisk/server/data/ddclient/config:/config
     restart: unless-stopped
 
-  nginx-proxy-manager:
-    image: "jc21/nginx-proxy-manager"
-    pull_policy: always
-    container_name: nginx-proxy-manager
-    restart: unless-stopped
+  # nginx-proxy-manager:
+  #   image: "jc21/nginx-proxy-manager"
+  #   pull_policy: always
+  #   container_name: nginx-proxy-manager
+  #   restart: unless-stopped
+  #   ports:
+  #     - 80:80
+  #     # - 81:81
+  #     - 443:443
+  #   volumes:
+  #     - /datadisk/server/data/nginx-proxy-manager/data:/data
+  #     - /datadisk/server/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+
+  zoraxy:
+    image: zoraxydocker/zoraxy:latest
+    container_name: zoraxy
     ports:
       - 80:80
-      # - 81:81
       - 443:443
+      - 8000:8000/tcp
     volumes:
-      - /datadisk/server/data/nginx-proxy-manager/data:/data
-      - /datadisk/server/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      -  /datadisk/server/data/zoraxy:/opt/zoraxy/config/
+    environment:
+      ARGS: '-fastgeoip'
 
   qbit:
     image: linuxserver/qbittorrent
