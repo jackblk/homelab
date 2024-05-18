@@ -100,7 +100,7 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 8000:8000/tcp
+      - 8005:8000/tcp
     volumes:
       -  /datadisk/server/data/zoraxy:/opt/zoraxy/config/
     environment:
