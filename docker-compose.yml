@@ -266,7 +266,7 @@ services:
 
   jellystat:
     container_name: jellystat
-    image: ghcr.io/jellystat:latest
+    image: cyfershepard/jellystat:latest
     restart: unless-stopped
     environment:
       POSTGRES_IP: jellystat-db
