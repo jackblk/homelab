@@ -102,9 +102,9 @@ services:
       - 443:443
       - 8005:8000/tcp
     volumes:
-      -  /datadisk/server/data/zoraxy:/opt/zoraxy/config/
+      - /datadisk/server/data/zoraxy:/opt/zoraxy/config/
     environment:
-      ARGS: '-fastgeoip'
+      ARGS: "-fastgeoip"
 
   qbit:
     image: linuxserver/qbittorrent
@@ -254,4 +254,28 @@ services:
       - PGID=1000
     env_file: ./.env
     volumes:
-      - "/datadisk/server/data/speedtest-tracker/config:/config"
+      - /datadisk/server/data/speedtest-tracker/config:/config
+
+  jellystat-db:
+    container_name: jellystat-db
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: ./.jellystat.env
+    volumes:
+      - /datadisk/server/data/jellystat-db/data:/var/lib/postgresql/data
+
+  jellystat:
+    container_name: jellystat
+    image: ghcr.io/jellystat:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_IP: jellystat-db
+      POSTGRES_PORT: 5432
+      POSTGRES_DATABASE: jellystat
+    env_file: ./.jellystat.env
+    volumes:
+      - /datadisk/server/data/jellystat/data:/app/backend/backup-data
+    depends_on:
+      - jellystat-db
+    # ports:
+    #   - "3000:3000"

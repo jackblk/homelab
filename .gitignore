@@ -131,3 +131,5 @@ tmp
 
 # mac
 .DS_Store
+
+.jellystat.env
