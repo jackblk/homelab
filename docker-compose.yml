@@ -28,8 +28,8 @@ services:
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     pull_policy: always
-    container_name: jellyseerr
     restart: unless-stopped
+    container_name: jellyseerr
     environment:
       - LOG_LEVEL=debug
       - TZ=Asia/Ho_Chi_Minh
@@ -40,6 +40,7 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     pull_policy: always
+    restart: unless-stopped
     container_name: jellyfin
 
     # currently using the first user from my system
@@ -62,7 +63,6 @@ services:
       - /datadisk/server/data/jellyfin/config:/config
       - /datadisk/server/data/jellyfin/cache:/cache
       - /datadisk/server/media/media:/media
-    restart: unless-stopped
     # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
@@ -72,6 +72,7 @@ services:
   ddclient:
     image: linuxserver/ddclient
     pull_policy: always
+    restart: unless-stopped
     container_name: ddclient
     environment:
       - PUID=1000
@@ -79,7 +80,6 @@ services:
       - TZ=Asia/Ho_Chi_Minh
     volumes:
       - /datadisk/server/data/ddclient/config:/config
-    restart: unless-stopped
 
   # nginx-proxy-manager:
   #   image: "jc21/nginx-proxy-manager"
@@ -96,6 +96,8 @@ services:
 
   zoraxy:
     image: zoraxydocker/zoraxy:latest
+    pull_policy: always
+    restart: unless-stopped
     container_name: zoraxy
     ports:
       - 80:80
@@ -109,6 +111,7 @@ services:
   qbit:
     image: linuxserver/qbittorrent
     pull_policy: always
+    restart: unless-stopped
     container_name: qbit
     environment:
       - PUID=1000
@@ -123,11 +126,11 @@ services:
     #   - 6881:6881
     #   - 6881:6881/udp
     #   - 8080:8080
-    restart: unless-stopped
 
   sonarr:
     image: linuxserver/sonarr:latest
     pull_policy: always
+    restart: unless-stopped
     container_name: sonarr
     environment:
       - PUID=1000
@@ -138,11 +141,11 @@ services:
       - /datadisk/server/media/:/data
     # ports:
     #   - 8989:8989
-    restart: unless-stopped
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     pull_policy: always
+    restart: unless-stopped
     container_name: radarr
     environment:
       - PUID=1000
@@ -153,7 +156,6 @@ services:
       - /datadisk/server/media/:/data
     # ports:
     #   - 7878:7878
-    restart: unless-stopped
 
   # jackett:
   #   image: lscr.io/linuxserver/jackett:latest
@@ -173,6 +175,7 @@ services:
   prowlarr:
     image: ghcr.io/hotio/prowlarr
     pull_policy: always
+    restart: unless-stopped
     container_name: prowlarr
     environment:
       - PUID=1000
@@ -182,13 +185,12 @@ services:
       - /datadisk/server/data/prowlarr/config:/config
     # ports:
     #   - 9696:9696
-    restart: unless-stopped
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
     pull_policy: always
-    container_name: flaresolverr
     restart: unless-stopped
+    container_name: flaresolverr
     environment:
       # - LOG_LEVEL=info
       # - LOG_HTML=false
@@ -200,6 +202,7 @@ services:
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     pull_policy: always
+    restart: unless-stopped
     container_name: bazarr
     environment:
       - PUID=1000
@@ -210,11 +213,11 @@ services:
       - /datadisk/server/media/:/data
     # ports:
     #   - 6767:6767
-    restart: unless-stopped
 
   tdarr:
     container_name: tdarr
     image: ghcr.io/haveagitgat/tdarr:latest
+    pull_policy: always
     restart: unless-stopped
     # network_mode: bridge
     # ports:
@@ -244,6 +247,7 @@ services:
 
   speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
+    pull_policy: always
     restart: unless-stopped
     container_name: speedtest-tracker
     # ports:
@@ -259,6 +263,7 @@ services:
   jellystat-db:
     container_name: jellystat-db
     image: postgres:16-alpine
+    pull_policy: always
     restart: unless-stopped
     env_file: ./.jellystat.env
     volumes:
@@ -267,6 +272,7 @@ services:
   jellystat:
     container_name: jellystat
     image: cyfershepard/jellystat:latest
+    pull_policy: always
     restart: unless-stopped
     environment:
       POSTGRES_IP: jellystat-db
