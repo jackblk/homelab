@@ -187,7 +187,8 @@ services:
     #   - 9696:9696
 
   flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:latest
+    # image: ghcr.io/flaresolverr/flaresolverr:latest
+    image: 21hsmw/flaresolverr:nodriver
     pull_policy: always
     restart: unless-stopped
     container_name: flaresolverr
