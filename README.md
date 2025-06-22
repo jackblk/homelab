@@ -6,13 +6,13 @@ My private homelab :).
 
 ```bash
 # Create data folder
-sudo mkdir /datadisk/server
-sudo chown -R $USER:$USER /datadisk/server
+sudo mkdir /data2/server
+sudo chown -R $USER:$USER /data2/server
 
 # Clone repo
-cd /datadisk/server
+cd /data2/server
 git clone https://github.com/jackblk/homelab.git
-cd /datadisk/server/homelab
+cd /data2/server/homelab
 
 # Create .env file, edit it
 cp .env.example .env

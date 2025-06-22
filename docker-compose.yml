@@ -8,9 +8,10 @@ services:
     # - 3000:3000
     env_file: ./.env
     volumes:
-      - /datadisk/server/data/homepage/config:/app/config
+      - /data2/server/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
-      - /datadisk:/datadisk:ro
+      - /data1:/data1:ro
+      - /data2:/data2:ro
 
   home-assistant:
     image: ghcr.io/home-assistant/home-assistant:stable
@@ -20,7 +21,7 @@ services:
     # ports:
     # - 8123:8123
     volumes:
-      - /datadisk/server/data/home-assistant/config:/config
+      - /data2/server/data/home-assistant/config:/config
       - /etc/localtime:/etc/localtime:ro
       # - /run/dbus:/run/dbus:ro # for Bluetooth integration
     # privileged: true
@@ -36,7 +37,7 @@ services:
     # ports:
     #   - 5055:5055
     volumes:
-      - /datadisk/server/data/jellyseer/config:/app/config
+      - /data2/server/data/jellyseer/config:/app/config
   jellyfin:
     image: jellyfin/jellyfin
     pull_policy: always
@@ -60,9 +61,9 @@ services:
     #   - 8096:8096 # http
     #   - 8920:8920 # https
     volumes:
-      - /datadisk/server/data/jellyfin/config:/config
-      - /datadisk/server/data/jellyfin/cache:/cache
-      - /datadisk/server/media/media:/media
+      - /data2/server/data/jellyfin/config:/config
+      - /data2/server/data/jellyfin/cache:/cache
+      - /data2/server/media/media:/media
     # Optional - alternative address used for autodiscovery
     environment:
       - JELLYFIN_PublishedServerUrl=https://flix.haicon.moe
@@ -79,7 +80,7 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - /datadisk/server/data/ddclient/config:/config
+      - /data2/server/data/ddclient/config:/config
 
   # nginx-proxy-manager:
   #   image: "jc21/nginx-proxy-manager"
@@ -91,8 +92,8 @@ services:
   #     # - 81:81
   #     - 443:443
   #   volumes:
-  #     - /datadisk/server/data/nginx-proxy-manager/data:/data
-  #     - /datadisk/server/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+  #     - /data2/server/data/nginx-proxy-manager/data:/data
+  #     - /data2/server/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
 
   zoraxy:
     image: zoraxydocker/zoraxy:latest
@@ -104,7 +105,7 @@ services:
       - 443:443
       - 8005:8000/tcp
     volumes:
-      - /datadisk/server/data/zoraxy:/opt/zoraxy/config/
+      - /data2/server/data/zoraxy:/opt/zoraxy/config/
     environment:
       ARGS: "-fastgeoip"
 
@@ -119,9 +120,9 @@ services:
       - TZ=Asia/Ho_Chi_Minh
       - WEBUI_PORT=8080
     volumes:
-      - /datadisk/server/media/torrents:/data/torrents
-      - /datadisk/server/data/qbit/config:/config
-      - /datadisk/server/data/qbit/theme:/theme
+      - /data2/server/media/torrents:/data/torrents
+      - /data2/server/data/qbit/config:/config
+      - /data2/server/data/qbit/theme:/theme
     # ports:
     #   - 6881:6881
     #   - 6881:6881/udp
@@ -137,8 +138,8 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - /datadisk/server/data/sonarr/config:/config
-      - /datadisk/server/media/:/data
+      - /data2/server/data/sonarr/config:/config
+      - /data2/server/media/:/data
     # ports:
     #   - 8989:8989
 
@@ -152,8 +153,8 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - /datadisk/server/data/radarr/config:/config
-      - /datadisk/server/media/:/data
+      - /data2/server/data/radarr/config:/config
+      - /data2/server/media/:/data
     # ports:
     #   - 7878:7878
 
@@ -167,7 +168,7 @@ services:
   #     - TZ=Asia/Ho_Chi_Minh
   #     - AUTO_UPDATE=true
   #   volumes:
-  #     - /datadisk/server/data/jackett/config:/config
+  #     - /data2/server/data/jackett/config:/config
   #   # ports:
   #   #   - 9117:9117
   #   restart: unless-stopped
@@ -182,7 +183,7 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - /datadisk/server/data/prowlarr/config:/config
+      - /data2/server/data/prowlarr/config:/config
     # ports:
     #   - 9696:9696
 
@@ -210,8 +211,8 @@ services:
       - PGID=1000
       - TZ=Asia/Ho_Chi_Minh
     volumes:
-      - /datadisk/server/data/bazarr/config:/config
-      - /datadisk/server/media/:/data
+      - /data2/server/data/bazarr/config:/config
+      - /data2/server/media/:/data
     # ports:
     #   - 6767:6767
 
@@ -240,11 +241,11 @@ services:
       - internalNode=true
       - nodeID=MyInternalNode
     volumes:
-      - /datadisk/server/data/tdarr/server:/app/server
-      - /datadisk/server/data/tdarr/configs:/app/configs
-      - /datadisk/server/data/tdarr/logs:/app/logs
+      - /data2/server/data/tdarr/server:/app/server
+      - /data2/server/data/tdarr/configs:/app/configs
+      - /data2/server/data/tdarr/logs:/app/logs
       - /tmp/tdarr/transcode_cache:/temp
-      - /datadisk/server/media:/media
+      - /data2/server/media:/media
 
   speedtest-tracker:
     image: lscr.io/linuxserver/speedtest-tracker:latest
@@ -259,7 +260,7 @@ services:
       - PGID=1000
     env_file: ./.env
     volumes:
-      - /datadisk/server/data/speedtest-tracker/config:/config
+      - /data2/server/data/speedtest-tracker/config:/config
 
   jellystat-db:
     container_name: jellystat-db
@@ -268,7 +269,7 @@ services:
     restart: unless-stopped
     env_file: ./.jellystat.env
     volumes:
-      - /datadisk/server/data/jellystat-db/data:/var/lib/postgresql/data
+      - /data2/server/data/jellystat-db/data:/var/lib/postgresql/data
 
   jellystat:
     container_name: jellystat
@@ -281,7 +282,7 @@ services:
       POSTGRES_DATABASE: jellystat
     env_file: ./.jellystat.env
     volumes:
-      - /datadisk/server/data/jellystat/data:/app/backend/backup-data
+      - /data2/server/data/jellystat/data:/app/backend/backup-data
     depends_on:
       - jellystat-db
     # ports:
