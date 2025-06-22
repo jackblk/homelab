@@ -27,7 +27,7 @@ services:
     # privileged: true
 
   jellyseerr:
-    image: fallenbagel/jellyseerr:latest
+    image: fallenbagel/jellyseerr:2.6.0
     pull_policy: always
     restart: unless-stopped
     container_name: jellyseerr
