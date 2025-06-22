@@ -8,8 +8,9 @@ services:
     ports:
       - 53:53/tcp # plain dns
       - 53:53/udp
-      # - 784:784/udp # dns over quicc
-      # - 853:853/tcp # dns over tls
+      - 853:853/tcp # dns over tls
+      - 784:784/udp # dns over quicc
+      - 853:853/udp # dns over quicc
       - 3000:3000/tcp # web UI
     volumes:
       - /osdisk/adguardhome/data/work:/opt/adguardhome/work
