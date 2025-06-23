@@ -104,6 +104,8 @@ services:
       - 80:80
       - 443:443
       - 8005:8000/tcp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - /data2/server/data/zoraxy:/opt/zoraxy/config/
     environment:
