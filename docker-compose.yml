@@ -38,6 +38,26 @@ services:
     #   - 5055:5055
     volumes:
       - /data2/server/data/jellyseer/config:/app/config
+
+  seer:
+    image: ghcr.io/seerr-team/seerr:latest
+    pull_policy: always
+    restart: unless-stopped
+    container_name: seer
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Ho_Chi_Minh
+    # ports:
+    #   - 5055:5055
+    volumes:
+      - /data2/server/data/seer/config:/app/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+
   jellyfin:
     image: jellyfin/jellyfin
     pull_policy: always
