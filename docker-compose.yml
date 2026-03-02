@@ -26,18 +26,18 @@ services:
       # - /run/dbus:/run/dbus:ro # for Bluetooth integration
     # privileged: true
 
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest
-    pull_policy: always
-    restart: unless-stopped
-    container_name: jellyseerr
-    environment:
-      - LOG_LEVEL=debug
-      - TZ=Asia/Ho_Chi_Minh
-    # ports:
-    #   - 5055:5055
-    volumes:
-      - /data2/server/data/jellyseer/config:/app/config
+  # jellyseerr:
+  #   image: fallenbagel/jellyseerr:latest
+  #   pull_policy: always
+  #   restart: unless-stopped
+  #   container_name: jellyseerr
+  #   environment:
+  #     - LOG_LEVEL=debug
+  #     - TZ=Asia/Ho_Chi_Minh
+  #   # ports:
+  #   #   - 5055:5055
+  #   volumes:
+  #     - /data2/server/data/jellyseer/config:/app/config
 
   seer:
     image: ghcr.io/seerr-team/seerr:latest
